@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preços Internacionais — Configurações</title>
+    <style>
+      :root { color-scheme: light; }
+      body {
+        margin: 0;
+        padding: 28px 20px 60px;
+        font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: #23231f;
+        background: #f6f6f4;
+      }
+      main { max-width: 620px; margin: 0 auto; }
+      h1 { font-size: 20px; margin: 0 0 4px; }
+      .sub { color: #75756c; margin: 0 0 24px; font-size: 13px; }
+      fieldset {
+        border: 1px solid #e3e3de;
+        border-radius: 10px;
+        background: #fff;
+        padding: 16px 18px;
+        margin: 0 0 16px;
+      }
+      legend { padding: 0 6px; font-weight: 600; font-size: 13px; color: #444; }
+      label.field { display: block; margin: 12px 0; }
+      label.field > span { display: block; font-size: 13px; margin-bottom: 4px; }
+      .hint { display: block; font-size: 11px; color: #8a8a80; margin-top: 3px; }
+      input[type="number"], select {
+        width: 100%;
+        padding: 7px 9px;
+        border: 1px solid #d7d7d1;
+        border-radius: 7px;
+        font: inherit;
+        background: #fff;
+      }
+      label.check { display: flex; gap: 8px; align-items: flex-start; margin: 10px 0; font-size: 13px; }
+      label.check input { margin-top: 3px; }
+      .actions { display: flex; gap: 10px; align-items: center; }
+      button {
+        padding: 9px 16px;
+        border-radius: 8px;
+        border: 1px solid #1f6feb;
+        background: #1f6feb;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      button.secondary { background: #fff; color: #1f6feb; }
+      .status { font-size: 13px; color: #17803d; }
+      .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      [hidden] { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Preços Internacionais — LigaYugioh</h1>
+      <p class="sub">Ajuste como o menor preço do TCGplayer e o preço do Cardmarket são convertidos e exibidos.</p>
+
+      <fieldset>
+        <legend>Conversão para reais</legend>
+
+        <label class="field">
+          <span>Fonte da cotação</span>
+          <select id="fxSource">
+            <option value="awesomeapi">AwesomeAPI — dólar/euro comercial (recomendado)</option>
+            <option value="erapi">open.er-api.com</option>
+            <option value="manual">Cotação manual (definida abaixo)</option>
+          </select>
+        </label>
+
+        <div class="row2" id="manualRates" hidden>
+          <label class="field">
+            <span>USD → BRL</span>
+            <input type="number" id="manualUsd" step="0.0001" min="0" />
+          </label>
+          <label class="field">
+            <span>EUR → BRL</span>
+            <input type="number" id="manualEur" step="0.0001" min="0" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Taxa adicional (%)</span>
+          <input type="number" id="extraFeePct" step="0.01" min="0" />
+          <span class="hint">Somada ao valor convertido. Use para simular IOF/spread do cartão (ex.: 6.38) ou custo de importação.</span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Qual anúncio do TCGplayer usar</legend>
+
+        <label class="field">
+          <span>Condição mínima aceita</span>
+          <select id="minCondition">
+            <option value="Near Mint">Near Mint (só NM)</option>
+            <option value="Lightly Played">Lightly Played ou melhor</option>
+            <option value="Moderately Played">Moderately Played ou melhor</option>
+            <option value="Heavily Played">Heavily Played ou melhor</option>
+            <option value="Damaged">Qualquer condição</option>
+          </select>
+        </label>
+
+        <div class="row2">
+          <label class="field">
+            <span>Idioma</span>
+            <select id="language">
+              <option value="English">Inglês</option>
+              <option value="any">Qualquer idioma</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Edição</span>
+            <select id="printing">
+              <option value="any">Qualquer</option>
+              <option value="1st Edition">1st Edition</option>
+              <option value="Unlimited">Unlimited</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="includeShipping" />
+          <span>Somar o frete do vendedor (dentro dos EUA) ao menor preço
+            <span class="hint">Não inclui frete internacional nem impostos de importação.</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Exibição</legend>
+        <label class="check"><input type="checkbox" id="showTcgLowest" /><span>Mostrar menor anúncio do TCGplayer</span></label>
+        <label class="check"><input type="checkbox" id="showTcgMarket" /><span>Mostrar market price do TCGplayer</span></label>
+        <label class="check"><input type="checkbox" id="showCardmarket" /><span>Mostrar preço de tendência do Cardmarket</span></label>
+        <label class="check"><input type="checkbox" id="autoOpen" /><span>Buscar automaticamente ao abrir a carta
+          <span class="hint">Desmarcado, o painel mostra um botão e só consulta quando você clicar.</span></span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Cache</legend>
+        <div class="row2">
+          <label class="field">
+            <span>Preços (minutos)</span>
+            <input type="number" id="priceTtlMin" min="1" step="1" />
+          </label>
+          <label class="field">
+            <span>Cotação (minutos)</span>
+            <input type="number" id="fxTtlMin" min="1" step="1" />
+          </label>
+        </div>
+        <button type="button" class="secondary" id="clearCache">Limpar cache agora</button>
+      </fieldset>
+
+      <div class="actions">
+        <button type="button" id="save">Salvar</button>
+        <span class="status" id="status"></span>
+      </div>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

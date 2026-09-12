@@ -1,0 +1,16 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Node (apenas para os testes)
+node_modules/
+
+# Pacotes gerados
+*.zip
+*.crx
+*.pem

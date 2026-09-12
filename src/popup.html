@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Preços Internacionais</title>
+    <style>
+      :root { color-scheme: light; }
+      body {
+        width: 290px;
+        margin: 0;
+        padding: 14px;
+        font: 13px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: #23231f;
+      }
+      h1 { font-size: 14px; margin: 0 0 10px; }
+      .fx { background: #f6f6f4; border-radius: 8px; padding: 10px; margin-bottom: 12px; }
+      .fx div { display: flex; justify-content: space-between; }
+      .fx .src { color: #85857c; font-size: 11px; display: block; margin-top: 6px; }
+      strong { font-variant-numeric: tabular-nums; }
+      label { display: flex; gap: 8px; align-items: center; margin: 8px 0; }
+      .actions { display: flex; gap: 8px; margin-top: 12px; }
+      button {
+        flex: 1;
+        padding: 7px 10px;
+        border-radius: 7px;
+        border: 1px solid #d7d7d1;
+        background: #fff;
+        font: inherit;
+        cursor: pointer;
+      }
+      button.primary { border-color: #1f6feb; background: #1f6feb; color: #fff; font-weight: 600; }
+      .status { font-size: 11px; color: #17803d; min-height: 14px; margin-top: 6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Preços Internacionais — LigaYugioh</h1>
+
+    <div class="fx">
+      <div><span>Dólar</span><strong id="usd">—</strong></div>
+      <div><span>Euro</span><strong id="eur">—</strong></div>
+      <span class="src" id="fxSrc">carregando cotação…</span>
+    </div>
+
+    <label><input type="checkbox" id="autoOpen" /> Buscar preço automaticamente</label>
+    <label><input type="checkbox" id="includeShipping" /> Somar frete do vendedor (EUA)</label>
+
+    <div class="actions">
+      <button type="button" id="options">Configurações</button>
+      <button type="button" class="primary" id="clear">Limpar cache</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

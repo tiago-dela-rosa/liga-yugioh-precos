@@ -1,0 +1,217 @@
+/*
+ * Painel injetado na página da carta.
+ * Os valores abaixo (cores, tamanhos, espaçamentos) são os mesmos usados pela LigaYugioh
+ * nos blocos "Detalhes da Carta" e "Preço Médio de Venda no Marketplace", para o painel
+ * parecer parte da página. Tudo é escopado por #lyp-panel para não vazar para o site.
+ */
+
+#lyp-panel.lyp-panel {
+  /* .container-infos é um flex column: sem largura explícita o painel encolhe. */
+  width: 100%;
+  align-self: stretch;
+  box-sizing: border-box;
+  margin: 12px 0 0;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 18px;
+  color: #4a4a4a;
+}
+
+/* ----------------------------------------------------- título da seção */
+
+#lyp-panel .lyp-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 12.8px;
+  font-weight: 600;
+  line-height: 19.2px;
+  letter-spacing: 0.496px;
+  color: #04050c;
+}
+
+#lyp-panel .lyp-actions {
+  display: flex;
+  gap: 12px;
+  flex: none;
+}
+
+#lyp-panel .lyp-action {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.496px;
+  color: #9002b3;
+  cursor: pointer;
+  user-select: none;
+}
+
+#lyp-panel .lyp-action:hover {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------- linhas de preço */
+
+#lyp-panel .lyp-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  background: #f5f5f5;
+}
+
+#lyp-panel .lyp-line-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+#lyp-panel .lyp-store {
+  font-size: 12.8px;
+  font-weight: 600;
+  letter-spacing: 0.496px;
+  color: #9002b3;
+  text-decoration: none;
+}
+
+#lyp-panel a.lyp-store:hover {
+  text-decoration: underline;
+}
+
+#lyp-panel .lyp-store-off {
+  color: #474745;
+}
+
+#lyp-panel .lyp-tag {
+  padding: 0 5px;
+  border-radius: 2px;
+  background: #e8e8e6;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #6b6b66;
+  white-space: nowrap;
+}
+
+#lyp-panel .lyp-note {
+  font-size: 11px;
+  color: #86867f;
+}
+
+#lyp-panel .lyp-line-right {
+  position: relative;
+  flex: none;
+  padding-left: 10px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Barra colorida à esquerda do valor, igual à do "Preço Médio" da Liga. */
+#lyp-panel .lyp-line-right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 17px;
+  margin-top: -8.5px;
+  background: #69bc40;
+}
+
+#lyp-panel .lyp-medium::before {
+  background: #b5971f;
+}
+
+#lyp-panel .lyp-max::before {
+  background: #ff8b64;
+}
+
+#lyp-panel .lyp-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: #474745;
+}
+
+#lyp-panel .lyp-sub {
+  font-size: 10.5px;
+  line-height: 14px;
+  color: #86867f;
+}
+
+/* ----------------------------------------------------- estados e avisos */
+
+#lyp-panel .lyp-loading,
+#lyp-panel .lyp-warn,
+#lyp-panel .lyp-error {
+  margin-top: 4px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  font-size: 11.5px;
+}
+
+#lyp-panel .lyp-loading {
+  background: #f5f5f5;
+  color: #86867f;
+}
+
+#lyp-panel .lyp-warn {
+  background: #fdf6e3;
+  color: #8a6d1f;
+}
+
+#lyp-panel .lyp-error {
+  background: #fdeeed;
+  color: #b42318;
+}
+
+#lyp-panel .lyp-foot {
+  padding: 6px 12px 0;
+  font-size: 10.5px;
+  line-height: 15px;
+  color: #9a9a93;
+}
+
+#lyp-panel .lyp-foot:empty {
+  display: none;
+}
+
+#lyp-panel .lyp-cta-line {
+  padding: 6px;
+}
+
+#lyp-panel .lyp-cta {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1px solid #9002b3;
+  border-radius: 2px;
+  background: #fff;
+  color: #9002b3;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.496px;
+  cursor: pointer;
+}
+
+#lyp-panel .lyp-cta:hover {
+  background: #9002b3;
+  color: #fff;
+}
+
+/* ----------------------------------------------------- responsivo */
+
+@media (max-width: 640px) {
+  #lyp-panel .lyp-title-extra {
+    display: none;
+  }
+
+  #lyp-panel .lyp-note {
+    flex-basis: 100%;
+  }
+}

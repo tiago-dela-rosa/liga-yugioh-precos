@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Preços Internacionais - LigaYugioh",
+  "version": "1.0.0",
+  "description": "Mostra o menor preço de cartas de Yu-Gi-Oh no TCGplayer e Cardmarket, já convertido para reais, dentro das páginas da LigaYugioh.",
+  "homepage_url": "https://github.com/tiago-dela-rosa/liga-yugioh-precos",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.ligayugioh.com.br/*",
+    "https://ligayugioh.com.br/*",
+    "https://mp-search-api.tcgplayer.com/*",
+    "https://db.ygoprodeck.com/*",
+    "https://economia.awesomeapi.com.br/*",
+    "https://open.er-api.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.ligayugioh.com.br/*",
+        "https://ligayugioh.com.br/*"
+      ],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Preços Internacionais - LigaYugioh"
+  }
+}
