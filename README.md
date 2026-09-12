@@ -6,7 +6,6 @@ Cardmarket**, já convertidos para reais pela cotação do dia.
 
 Sem cadastro, sem chave de API, sem servidor no meio: tudo roda no seu navegador.
 
-<!-- Substitua pelo print do painel na página da carta -->
 ![Painel de preços internacionais na página da carta](docs/images/painel.png)
 
 > Projeto **não oficial**, sem qualquer vínculo com LigaYugioh, TCGplayer, Cardmarket ou Konami.
@@ -51,17 +50,20 @@ raridade, então não confunde uma *Secret Rare* com a *Ultra Rare* da mesma car
 A extensão ainda não está na Chrome Web Store. A instalação é manual, leva 2 minutos e funciona no
 **Google Chrome**, **Microsoft Edge**, **Brave** e outros navegadores baseados em Chromium.
 
-### 1. Baixe o projeto
+### 1. Baixe a versão mais recente
 
-Clique no botão verde **Code** no topo desta página e depois em **Download ZIP**.
+Vá na página de **[Releases](https://github.com/tiago-dela-rosa/liga-yugioh-precos/releases/latest)**
+e baixe o arquivo `liga-yugioh-precos-vX.Y.Z.zip` que está em **Assets**.
 
-<!-- Substitua pelo print do botão Code > Download ZIP -->
-![Botão Code > Download ZIP no GitHub](docs/images/instalacao-1-download.png)
+<!-- Substitua pelo print da página de Releases com o .zip em Assets -->
+![Página de Releases com o arquivo .zip em Assets](docs/images/instalacao-1-download.png)
 
-Extraia o ZIP em uma pasta que você **não vá apagar** (ex.: `Documentos\liga-yugioh-precos`).
-O Chrome carrega a extensão direto dessa pasta — se ela sumir, a extensão para de funcionar.
+Extraia o ZIP em um lugar que você **não vá apagar** (ex.: `Documentos`). Vai aparecer uma pasta
+`liga-yugioh-precos` — o Chrome carrega a extensão direto dela; se a pasta sumir, a extensão para de
+funcionar.
 
-> Se você usa Git: `git clone https://github.com/tiago-dela-rosa/liga-yugioh-precos.git`
+> Quer a versão de desenvolvimento? Use o botão **Code → Download ZIP** no topo desta página ou
+> `git clone https://github.com/tiago-dela-rosa/liga-yugioh-precos.git`.
 
 ### 2. Abra a página de extensões
 
@@ -103,7 +105,8 @@ Role até *"Preço Médio de Venda no Marketplace"* — o painel estará logo ab
 
 ### Atualizando para uma versão nova
 
-1. Baixe o ZIP novo e extraia **por cima** da mesma pasta (ou dê `git pull`).
+1. Baixe o `.zip` da nova [release](https://github.com/tiago-dela-rosa/liga-yugioh-precos/releases/latest)
+   e extraia **por cima** da mesma pasta, substituindo os arquivos.
 2. Em `chrome://extensions`, clique no ícone de **recarregar** (↻) no card da extensão.
 
 ---
@@ -219,6 +222,7 @@ src/shared.js          Configuração padrão e utilidades
 src/options.html|js    Página de configurações
 src/popup.html|js      Popup da barra de ferramentas
 test/                  Teste da lógica do service worker fora do Chrome
+scripts/build-zip.py   Gera o .zip da release em dist/
 docs/images/           Imagens usadas neste README
 ```
 
@@ -230,6 +234,13 @@ node test/test-background.mjs
 
 Depois de editar qualquer arquivo, clique em **recarregar** (↻) no card da extensão em
 `chrome://extensions` e dê F5 na página da carta.
+
+Para lançar uma versão: atualize `version` no `manifest.json`, faça o commit e crie a tag
+correspondente — o GitHub Actions gera o `.zip` e publica a release sozinho:
+
+```bash
+git tag v1.1.0 && git push origin v1.1.0
+```
 
 Sugestões e correções são bem-vindas — abra uma *issue* ou um *pull request*.
 
