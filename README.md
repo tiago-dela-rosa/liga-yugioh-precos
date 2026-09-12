@@ -55,7 +55,6 @@ A extensão ainda não está na Chrome Web Store. A instalação é manual, leva
 Vá na página de **[Releases](https://github.com/tiago-dela-rosa/liga-yugioh-precos/releases/latest)**
 e baixe o arquivo `liga-yugioh-precos-vX.Y.Z.zip` que está em **Assets**.
 
-<!-- Substitua pelo print da página de Releases com o .zip em Assets -->
 ![Página de Releases com o arquivo .zip em Assets](docs/images/instalacao-1-download.png)
 
 Extraia o ZIP em um lugar que você **não vá apagar** (ex.: `Documentos`). Vai aparecer uma pasta
@@ -79,7 +78,6 @@ chrome://extensions
 
 No canto superior direito da página, ligue a chave **Modo do desenvolvedor**.
 
-<!-- Substitua pelo print da chave "Modo do desenvolvedor" -->
 ![Chave Modo do desenvolvedor em chrome://extensions](docs/images/instalacao-2-modo-dev.png)
 
 ### 4. Carregue a extensão
@@ -87,12 +85,10 @@ No canto superior direito da página, ligue a chave **Modo do desenvolvedor**.
 Clique em **Carregar sem compactação** e selecione a pasta que você extraiu — a pasta que contém o
 arquivo `manifest.json`.
 
-<!-- Substitua pelo print do botão "Carregar sem compactação" e da seleção da pasta -->
 ![Botão Carregar sem compactação](docs/images/instalacao-3-carregar.png)
 
 A extensão aparece na lista com o ícone verde de cifrão. Pronto.
 
-<!-- Substitua pelo print da extensão instalada na lista -->
 ![Extensão instalada na lista do Chrome](docs/images/instalacao-4-instalada.png)
 
 ### 5. Teste
@@ -121,7 +117,6 @@ Role até *"Preço Médio de Venda no Marketplace"* — o painel estará logo ab
 - A barrinha colorida ao lado do valor segue o padrão da Liga: **verde** para menor preço,
   **amarela** para preço médio.
 
-<!-- Substitua por um GIF ou print da extensão em uso -->
 ![Extensão em uso](docs/images/uso.png)
 
 ---
@@ -130,7 +125,6 @@ Role até *"Preço Médio de Venda no Marketplace"* — o painel estará logo ab
 
 Clique no ícone da extensão na barra do Chrome → **Configurações** (ou em **Configurar** no painel).
 
-<!-- Substitua pelo print da página de configurações -->
 ![Página de configurações](docs/images/configuracoes.png)
 
 ### Conversão para reais
@@ -157,7 +151,6 @@ Clique no ícone da extensão na barra do Chrome → **Configurações** (ou em 
 
 O **popup** do ícone mostra a cotação em uso e tem atalhos para as opções mais comuns.
 
-<!-- Substitua pelo print do popup -->
 ![Popup da extensão](docs/images/popup.png)
 
 ---
@@ -223,6 +216,7 @@ src/options.html|js    Página de configurações
 src/popup.html|js      Popup da barra de ferramentas
 test/                  Teste da lógica do service worker fora do Chrome
 scripts/build-zip.py   Gera o .zip da release em dist/
+scripts/screenshots.mjs  Regera os prints de docs/images/ com um Chromium automatizado
 docs/images/           Imagens usadas neste README
 ```
 
@@ -230,6 +224,13 @@ Para rodar a lógica do service worker fora do Chrome (consulta as APIs reais):
 
 ```bash
 node test/test-background.mjs
+```
+
+Para regerar os prints do README (usa o Chromium do Playwright, se existir em
+`%LOCALAPPDATA%\ms-playwright`, ou o binário em `CHROME_PATH`):
+
+```bash
+node scripts/screenshots.mjs
 ```
 
 Depois de editar qualquer arquivo, clique em **recarregar** (↻) no card da extensão em

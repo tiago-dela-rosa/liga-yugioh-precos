@@ -1,16 +1,16 @@
 # Imagens do README
 
-Coloque aqui os prints referenciados no README principal, com estes nomes:
+Todos os prints desta pasta são gerados por `node scripts/screenshots.mjs`, que abre um
+Chromium automatizado, carrega a extensão e salva os PNGs aqui. Rode de novo depois de
+mudar o visual do painel, das opções ou do popup.
 
-| Arquivo | O que mostrar |
+| Arquivo | Conteúdo |
 | --- | --- |
-| `painel.png` | Painel "Preços Internacionais em Reais" na página da carta (imagem principal) |
-| `instalacao-1-download.png` | Página de **Releases** com o `.zip` em Assets |
+| `painel.png` | Painel na página da carta (imagem principal; este foi tirado à mão) |
+| `instalacao-1-download.png` | Página de Releases com o `.zip` em Assets |
 | `instalacao-2-modo-dev.png` | Chave **Modo do desenvolvedor** em `chrome://extensions` |
-| `instalacao-3-carregar.png` | Botão **Carregar sem compactação** / seleção da pasta |
-| `instalacao-4-instalada.png` | Extensão aparecendo na lista do Chrome |
-| `uso.png` | Extensão em uso (print ou GIF) |
+| `instalacao-3-carregar.png` | Botão **Carregar sem compactação** |
+| `instalacao-4-instalada.png` | Extensão na lista do Chrome |
+| `uso.png` | Detalhe do painel com preços reais |
 | `configuracoes.png` | Página de configurações |
 | `popup.png` | Popup do ícone da extensão |
-
-Formato sugerido: PNG, largura de até 1400 px.

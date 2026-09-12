@@ -204,7 +204,11 @@
               url: t.url,
               tag: 'menor anúncio',
               main: '—',
-              sub: t.filteredOut ? 'nada no filtro atual' : 'sem anúncios ativos',
+              sub: t.listingsFailed
+                ? 'não foi possível consultar os anúncios'
+                : t.filteredOut
+                  ? 'nada no filtro atual'
+                  : 'sem anúncios ativos',
               variant: 'min'
             })
           );

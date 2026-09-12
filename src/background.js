@@ -373,6 +373,7 @@ async function buildPrices(card, settings, force) {
       alternatives: raw.tcg.alternatives,
       totalResults: raw.tcg.totalResults,
       filteredOut: raw.tcg.filteredOut,
+      listingsFailed: Boolean(raw.tcg.error),
       market: raw.tcg.marketPrice
         ? { usd: raw.tcg.marketPrice, brl: usdToBrl(raw.tcg.marketPrice) }
         : null,
